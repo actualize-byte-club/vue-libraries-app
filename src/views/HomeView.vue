@@ -1,18 +1,31 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <pie-chart :data="data"></pie-chart>
+
+    <VueMultiselect v-model="selected" :options="options" :multiple="true">
+    </VueMultiselect>
+
+    <p>Selected v-model: {{ selected }}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import VueMultiselect from "vue-multiselect";
 
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld
+  components: { VueMultiselect },
+  data() {
+    return {
+      selected: null,
+      options: ["list", "of", "options", "a", "b", "c"],
+      data: [
+        ["Blueberry", 44],
+        ["Strawberry", 23],
+        ["Pineapple", 45]
+      ]
+    };
   }
 };
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
